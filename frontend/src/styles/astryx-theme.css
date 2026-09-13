@@ -1,0 +1,933 @@
+/* ============================================================================
+   LearnAI — Meta Astryx Design System Theme
+   Clean, accessible, agent-ready SaaS component tokens inspired by facebook/astryx
+   Colors: Primary Blue (#2563EB), Dark Navy (#0F172A), Light Blue (#EFF6FF), Slate
+   Components: App Shell, Side Nav, Cards, Tables, Chat Layout, Progress Bar, Badges
+   ============================================================================ */
+
+:root {
+  --astryx-primary: #2563EB;
+  --astryx-primary-hover: #1D4ED8;
+  --astryx-primary-light: #EFF6FF;
+  --astryx-navy: #0F172A;
+  --astryx-dark-blue: #1E3A8A;
+  --astryx-bg-page: #F8FAFC;
+  --astryx-bg-card: #FFFFFF;
+  --astryx-text-main: #0F172A;
+  --astryx-text-muted: #64748B;
+  --astryx-border: #E2E8F0;
+  --astryx-border-light: #F1F5F9;
+  --astryx-success: #16A34A;
+  --astryx-success-bg: #DCFCE7;
+  --astryx-warning: #F59E0B;
+  --astryx-warning-bg: #FEF3C7;
+  --astryx-danger: #DC2626;
+  --astryx-danger-bg: #FEE2E2;
+  --astryx-radius-sm: 6px;
+  --astryx-radius-md: 10px;
+  --astryx-radius-lg: 16px;
+  --astryx-radius-full: 9999px;
+  --astryx-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --astryx-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.04);
+  --astryx-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.03);
+  --astryx-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--astryx-bg-page);
+  color: var(--astryx-text-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  transition: all 0.2s ease;
+}
+
+input, select, textarea {
+  font-family: inherit;
+  outline: none;
+}
+
+/* --------------------------------------------------------------------------
+   Astryx App Shell & Nav
+   -------------------------------------------------------------------------- */
+.astryx-app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.astryx-demo-banner {
+  background: #0F172A;
+  color: #E2E8F0;
+  padding: 8px 24px;
+  font-size: 13px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  border-bottom: 1px solid #1E293B;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.astryx-role-pill {
+  padding: 4px 12px;
+  border-radius: var(--astryx-radius-full);
+  font-size: 12px;
+  font-weight: 600;
+  color: #94A3B8;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.astryx-role-pill:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: white;
+}
+
+.astryx-role-pill.active {
+  background: var(--astryx-primary);
+  color: white;
+  border-color: var(--astryx-primary);
+  box-shadow: 0 0 12px rgba(37, 99, 235, 0.45);
+}
+
+.astryx-ai-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #34D399;
+  padding: 4px 12px;
+  border-radius: var(--astryx-radius-full);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.astryx-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #34D399;
+  box-shadow: 0 0 6px #34D399;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+.astryx-navbar {
+  background: #FFFFFF;
+  border-bottom: 1px solid var(--astryx-border);
+  padding: 0 28px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 41px;
+  z-index: 90;
+  box-shadow: var(--astryx-shadow-sm);
+}
+
+.astryx-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--astryx-navy);
+  letter-spacing: -0.5px;
+  cursor: pointer;
+}
+
+.astryx-logo-badge {
+  background: var(--astryx-primary);
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--astryx-radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.astryx-suite-tabs {
+  display: flex;
+  gap: 4px;
+  background: var(--astryx-border-light);
+  padding: 4px;
+  border-radius: var(--astryx-radius-md);
+}
+
+.astryx-suite-tab {
+  padding: 7px 14px;
+  border-radius: var(--astryx-radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--astryx-text-muted);
+}
+
+.astryx-suite-tab:hover {
+  color: var(--astryx-navy);
+}
+
+.astryx-suite-tab.active {
+  background: #FFFFFF;
+  color: var(--astryx-primary);
+  box-shadow: var(--astryx-shadow-sm);
+}
+
+.astryx-subnav-strip {
+  background: #FFFFFF;
+  border-bottom: 1px solid var(--astryx-border);
+  padding: 8px 28px;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.astryx-subnav-link {
+  padding: 6px 12px;
+  border-radius: var(--astryx-radius-full);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--astryx-text-muted);
+  border: 1px solid transparent;
+}
+
+.astryx-subnav-link:hover {
+  background: var(--astryx-border-light);
+  color: var(--astryx-navy);
+}
+
+.astryx-subnav-link.active {
+  background: var(--astryx-primary-light);
+  color: var(--astryx-primary);
+  border-color: #BFDBFE;
+}
+
+/* --------------------------------------------------------------------------
+   Astryx Components: Buttons, Cards, Badges
+   -------------------------------------------------------------------------- */
+.astryx-btn-primary {
+  background: var(--astryx-primary);
+  color: #FFFFFF;
+  padding: 9px 18px;
+  border-radius: var(--astryx-radius-md);
+  font-weight: 600;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+}
+
+.astryx-btn-primary:hover {
+  background: var(--astryx-primary-hover);
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+}
+
+.astryx-btn-secondary {
+  background: #FFFFFF;
+  color: var(--astryx-text-main);
+  border: 1px solid var(--astryx-border);
+  padding: 9px 18px;
+  border-radius: var(--astryx-radius-md);
+  font-weight: 600;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.astryx-btn-secondary:hover {
+  background: var(--astryx-border-light);
+}
+
+.astryx-btn-magic {
+  background: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
+  color: white;
+  padding: 9px 18px;
+  border-radius: var(--astryx-radius-md);
+  font-weight: 600;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25);
+}
+
+.astryx-btn-magic:hover {
+  opacity: 0.95;
+  transform: translateY(-1px);
+}
+
+.astryx-card {
+  background: var(--astryx-bg-card);
+  border-radius: var(--astryx-radius-lg);
+  border: 1px solid var(--astryx-border);
+  overflow: hidden;
+  transition: all 0.2s ease;
+  box-shadow: var(--astryx-shadow-sm);
+}
+
+.astryx-card:hover {
+  box-shadow: var(--astryx-shadow-md);
+  border-color: #CBD5E1;
+}
+
+/* --------------------------------------------------------------------------
+   Astryx Chat Layout & Chat Composer
+   -------------------------------------------------------------------------- */
+.astryx-chat-container {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  height: calc(100vh - 140px);
+  max-height: calc(100vh - 140px);
+  min-height: 520px;
+  background: #FFFFFF;
+  border: 1px solid var(--astryx-border);
+  border-radius: var(--astryx-radius-lg);
+  overflow: hidden;
+  max-width: 1400px;
+  margin: 0 auto;
+  box-shadow: var(--astryx-shadow-md);
+}
+
+.astryx-chat-sidebar {
+  background: #F8FAFC;
+  border-right: 1px solid var(--astryx-border);
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  height: 100%;
+  max-height: 100%;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.astryx-chat-thread {
+  height: 100%;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #FFFFFF;
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.astryx-chat-messages {
+  flex: 1 1 0%;
+  padding: 24px;
+  overflow-y: auto !important;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-height: 0;
+  scroll-behavior: smooth;
+}
+
+/* Modern sleek scrollbar for chat messages */
+.astryx-chat-messages::-webkit-scrollbar {
+  width: 7px;
+}
+.astryx-chat-messages::-webkit-scrollbar-track {
+  background: #F1F5F9;
+  border-radius: 4px;
+}
+.astryx-chat-messages::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+.astryx-chat-messages::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+.astryx-chat-input-bar {
+  padding: 16px 20px;
+  border-top: 1px solid var(--astryx-border);
+  display: flex;
+  gap: 10px;
+  background: #FFFFFF;
+  flex-shrink: 0;
+}
+
+.astryx-chat-bubble-user {
+  align-self: flex-end;
+  background: var(--astryx-navy);
+  color: #FFFFFF;
+  padding: 14px 18px;
+  border-radius: var(--astryx-radius-lg);
+  border-bottom-right-radius: 4px;
+  max-width: 80%;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.astryx-chat-bubble-ai {
+  align-self: flex-start;
+  background: var(--astryx-primary-light);
+  color: var(--astryx-navy);
+  padding: 16px 20px;
+  border-radius: var(--astryx-radius-lg);
+  border-bottom-left-radius: 4px;
+  border: 1px solid #DBEAFE;
+  max-width: 85%;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   Astryx Tables & Progress Bar
+   -------------------------------------------------------------------------- */
+.astryx-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  text-align: left;
+}
+
+.astryx-table th {
+  background: var(--astryx-border-light);
+  color: var(--astryx-text-muted);
+  font-weight: 700;
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--astryx-border);
+}
+
+.astryx-table td {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--astryx-border-light);
+  color: var(--astryx-text-main);
+}
+
+.astryx-progress-track {
+  height: 8px;
+  background: var(--astryx-border-light);
+  border-radius: var(--astryx-radius-full);
+  overflow: hidden;
+}
+
+.astryx-progress-fill {
+  height: 100%;
+  background: var(--astryx-success);
+  transition: width 0.3s ease;
+}
+
+/* --------------------------------------------------------------------------
+   Modal Overlays
+   -------------------------------------------------------------------------- */
+.astryx-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  padding: 20px;
+}
+
+.astryx-modal-box {
+  background: #FFFFFF;
+  border-radius: var(--astryx-radius-lg);
+  max-width: 680px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 32px;
+  box-shadow: var(--astryx-shadow-xl);
+  border: 1px solid var(--astryx-border);
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Layout
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .astryx-chat-container {
+    grid-template-columns: 1fr;
+  }
+  .astryx-chat-sidebar {
+    display: none;
+  }
+  .astryx-suite-tabs {
+    display: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   AI Thinking & Failover Animations
+   -------------------------------------------------------------------------- */
+@keyframes astryx-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.8;
+  }
+}
+
+@keyframes astryx-gradient-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes astryx-slide-up {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.astryx-model-pill-highlight {
+  animation: astryx-pulse 0.8s ease-in-out 3;
+}
+
+/* --------------------------------------------------------------------------
+   Assistant-UI Modern Conversational Design & Session History
+   -------------------------------------------------------------------------- */
+.aui-chat-container {
+  display: grid;
+  grid-template-columns: 310px 1fr;
+  height: calc(100vh - 130px);
+  max-height: calc(100vh - 130px);
+  min-height: 540px;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  overflow: hidden;
+  max-width: 1440px;
+  margin: 0 auto;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
+.aui-sidebar {
+  background: #F8FAFC;
+  border-right: 1px solid #E2E8F0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.aui-sidebar-header {
+  padding: 16px;
+  border-bottom: 1px solid #E2E8F0;
+  background: #FFFFFF;
+}
+
+.aui-new-chat-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: linear-gradient(135deg, #1D4ED8 0%, #2563EB 100%);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.25);
+  transition: all 0.2s ease;
+}
+
+.aui-new-chat-btn:hover {
+  background: linear-gradient(135deg, #1E40AF 0%, #1D4ED8 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+}
+
+.aui-search-box {
+  margin-top: 10px;
+  position: relative;
+}
+
+.aui-search-input {
+  width: 100%;
+  padding: 8px 12px 8px 32px;
+  border-radius: 8px;
+  border: 1px solid #CBD5E1;
+  background: #F1F5F9;
+  font-size: 12px;
+  color: #1E293B;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.aui-search-input:focus {
+  background: #FFFFFF;
+  border-color: #3B82F6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.aui-search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  color: #94A3B8;
+}
+
+.aui-sessions-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 0;
+}
+
+.aui-session-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: left;
+}
+
+.aui-session-item:hover {
+  background: #F1F5F9;
+  border-color: #CBD5E1;
+  transform: translateX(2px);
+}
+
+.aui-session-item.active {
+  background: #EFF6FF;
+  border-color: #3B82F6;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.15);
+}
+
+.aui-session-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #0F172A;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 190px;
+}
+
+.aui-session-item.active .aui-session-title {
+  color: #1D4ED8;
+}
+
+.aui-session-meta {
+  font-size: 11px;
+  color: #64748B;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.aui-delete-session-btn {
+  background: transparent;
+  border: none;
+  color: #94A3B8;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.2s ease;
+}
+
+.aui-session-item:hover .aui-delete-session-btn {
+  opacity: 1;
+}
+
+.aui-delete-session-btn:hover {
+  color: #EF4444;
+  background: #FEE2E2;
+}
+
+.aui-sidebar-footer {
+  padding: 14px 16px;
+  border-top: 1px solid #E2E8F0;
+  background: #FFFFFF;
+}
+
+.aui-thread-main {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  min-width: 0;
+  background: #FFFFFF;
+  position: relative;
+}
+
+.aui-thread-header {
+  padding: 12px 20px;
+  border-bottom: 1px solid #E2E8F0;
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+.aui-thread-messages {
+  flex: 1 1 0%;
+  padding: 24px;
+  overflow-y: auto !important;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-height: 0;
+  scroll-behavior: smooth;
+  background: #FAFAFA;
+}
+
+.aui-message-wrapper {
+  display: flex;
+  gap: 12px;
+  max-width: 96%;
+  animation: astryx-slide-up 0.2s ease-out;
+}
+
+.aui-message-wrapper.user {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.aui-message-wrapper.ai {
+  align-self: flex-start;
+  width: 100%;
+}
+
+.aui-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.aui-avatar.user {
+  background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+  color: #FFFFFF;
+}
+
+.aui-avatar.ai {
+  background: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
+  color: #FFFFFF;
+}
+
+.aui-bubble-user {
+  background: #0F172A;
+  color: #FFFFFF;
+  padding: 12px 18px;
+  border-radius: 14px;
+  border-top-right-radius: 4px;
+  font-size: 14px;
+  line-height: 1.6;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.1);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.aui-bubble-ai {
+  flex: 1;
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  padding: 18px 22px;
+  border-radius: 14px;
+  border-top-left-radius: 4px;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+  min-width: 0;
+}
+
+.aui-action-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid #F1F5F9;
+  font-size: 12px;
+}
+
+.aui-action-btn {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  color: #64748B;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.15s ease;
+}
+
+.aui-action-btn:hover {
+  background: #EFF6FF;
+  color: #1D4ED8;
+  border-color: #BFDBFE;
+}
+
+.aui-action-btn.active {
+  background: #DCFCE7;
+  color: #15803D;
+  border-color: #86EFAC;
+}
+
+.aui-composer-bar {
+  padding: 14px 20px 16px;
+  background: #FFFFFF;
+  border-top: 1px solid #E2E8F0;
+  flex-shrink: 0;
+}
+
+.aui-prompt-chips {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scrollbar-width: none;
+}
+
+.aui-prompt-chips::-webkit-scrollbar {
+  display: none;
+}
+
+.aui-chip-btn {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  color: #334155;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.aui-chip-btn:hover {
+  background: #EFF6FF;
+  border-color: #3B82F6;
+  color: #1D4ED8;
+}
+
+.aui-composer-box {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  background: #FFFFFF;
+  border: 1.5px solid #CBD5E1;
+  border-radius: 12px;
+  padding: 8px 12px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.aui-composer-box:focus-within {
+  border-color: #2563EB;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.aui-composer-textarea {
+  flex: 1;
+  border: none;
+  outline: none;
+  resize: none;
+  font-size: 14px;
+  line-height: 1.5;
+  font-family: inherit;
+  color: #0F172A;
+  max-height: 140px;
+  min-height: 40px;
+  padding: 6px 0;
+}
+
+.aui-send-btn {
+  background: linear-gradient(135deg, #1D4ED8 0%, #2563EB 100%);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+}
+
+.aui-send-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #1E40AF 0%, #1D4ED8 100%);
+  transform: translateY(-1px);
+}
+
+.aui-send-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
